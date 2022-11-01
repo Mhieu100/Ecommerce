@@ -5,7 +5,8 @@
                 {{-- <img src="images/logo.svg" alt="logo"/> --}}
                 Ecommerce
             </a>
-            <a class="navbar-brand brand-logo-mini" href="index.html"><img src="{{ asset('admin/images/logo-mini.svg') }}" alt="logo" /></a>
+            <a class="navbar-brand brand-logo-mini" href="index.html"><img
+                    src="{{ asset('admin/images/logo-mini.svg') }}" alt="logo" /></a>
             <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
                 <span class="mdi mdi-sort-variant"></span>
             </button>
@@ -131,8 +132,7 @@
                         <i class="mdi mdi-settings text-primary"></i>
                         Settings
                     </a>
-                    <a class="dropdown-item" href="{{ route('logout') }}"
-                        onclick="event.preventDefault();
+                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                         <i class="mdi mdi-logout text-primary"></i> {{ __('Logout') }}
                     </a>
