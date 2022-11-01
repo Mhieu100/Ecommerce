@@ -36,7 +36,7 @@ class CategoryController extends Controller
             $file->move('uploads/category/' ,$filename);
             $category->image =  $filename;
         }
-        // $category->status = $validatedData['status'];
+        $category->status = $request->status == true ? '1' : '0';
         $category->meta_title = $validatedData['meta_title'];
         $category->meta_keywords = $validatedData['meta_keywords'];
         $category->meta_description = $validatedData['meta_description'];
@@ -69,7 +69,7 @@ class CategoryController extends Controller
             $file->move('uploads/category/' ,$filename);
             $category->image =  $filename;
         }
-        // $category->status = $validatedData['status'];
+        $category->status = $request->status == true ? '1' : '0';
         $category->meta_title = $validatedData['meta_title'];
         $category->meta_keywords = $validatedData['meta_keywords'];
         $category->meta_description = $validatedData['meta_description'];

@@ -19,21 +19,21 @@
                                 <label for="">Name</label>
                                 <input type="text" name="name" value="{{ $category->name }}" class="form-control">
                                 @error('name')
-                                   <small class="text-danger">{{ $message }}</small> 
+                                   <small class="text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="">Slug</label>
                                 <input type="text" name="slug" value="{{ $category->slug }}" class="form-control">
                                 @error('slug')
-                                   <small class="text-danger">{{ $message }}</small> 
+                                   <small class="text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
                             <div class="col-md-12 mb-3">
                                 <label for="">Description</label>
                                 <textarea type="text" name="description" class="form-control" row="3">{{ $category->description }}</textarea>
                                 @error('description')
-                                   <small class="text-danger">{{ $message }}</small> 
+                                   <small class="text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
                             <div class="col-md-6 mb-3">
@@ -41,14 +41,14 @@
                                 <input type="file" name="image" class="form-control">
                                 <img src="{{ asset('/uploads/category/'.$category->image) }}" width="60px" height="60px" alt="">
                                 @error('image')
-                                   <small class="text-danger">{{ $message }}</small> 
+                                   <small class="text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="">Status</label> <br>
-                                <input type="checkbox" name="status" {{ $category->status == '1' ? 'checked' :'' }} >
+                                <input type="checkbox" name="status" {{ $category->status == '1' ? 'checked' :'' }} > <small>Checked = Hidden | Unchecked = Visible</small>
                                 @error('status')
-                                <small class="text-danger">{{ $message }}</small> 
+                                <small class="text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
                             <div class="col-md-12 mb-3">
@@ -58,21 +58,21 @@
                                 <label for="">Meta Title</label>
                                 <input type="text" name="meta_title" value="{{ $category->meta_title }}" class="form-control">
                                 @error('meta_title')
-                                   <small class="text-danger">{{ $message }}</small> 
+                                   <small class="text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
                             <div class="col-md-12 mb-3">
                                 <label for="">Meta Keyword</label>
                                 <textarea type="text" name="meta_keywords" class="form-control" row="3">{{ $category->meta_keywords }}</textarea>
                                 @error('meta_keywords')
-                                   <small class="text-danger">{{ $message }}</small> 
+                                   <small class="text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
                             <div class="col-md-12 mb-3">
                                 <label for="">Meta Description</label>
                                 <textarea type="text" name="meta_description" class="form-control" row="3">{{ $category->meta_description }}</textarea>
                                 @error('meta_description')
-                                   <small class="text-danger">{{ $message }}</small> 
+                                   <small class="text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
                             <div class="col-md-12 mb-3">
