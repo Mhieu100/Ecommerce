@@ -6,7 +6,7 @@
                 <span class="menu-title">Dashboard</span>
             </a>
         </li>
-        <!-- <li class="nav-item">
+        {{-- <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
                 aria-controls="ui-basic">
                 <i class="mdi mdi-view-headline menu-icon"></i>
@@ -20,7 +20,7 @@
                     <li class="nav-item"> <a class="nav-link" href="{{ url('admin/category') }}">View Category</a></li>
                 </ul>
             </div>
-        </li> -->
+        </li> --}}
         <li class="nav-item">
             <a class="nav-link" href="{{ url('admin/category') }}">
                 <i class="mdi mdi-view-headline menu-icon"></i>
@@ -34,6 +34,12 @@
             </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" href="{{ url('admin/products') }}">
+                <i class="mdi mdi-view-headline menu-icon"></i>
+                <span class="menu-title">Product</span>
+            </a>
+        </li>
+        {{-- <li class="nav-item">
             <a class="nav-link" href="pages/charts/chartjs.html">
                 <i class="mdi mdi-chart-pie menu-icon"></i>
                 <span class="menu-title">Charts</span>
@@ -73,6 +79,6 @@
                 <i class="mdi mdi-file-document-box-outline menu-icon"></i>
                 <span class="menu-title">Documentation</span>
             </a>
-        </li>
+        </li> --}}
     </ul>
 </nav>

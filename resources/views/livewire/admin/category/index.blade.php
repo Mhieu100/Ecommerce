@@ -1,7 +1,8 @@
 <div>
 
     <!-- Modal -->
-    <div wire:ignore.seft class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div wire:ignore.seft class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -45,19 +46,24 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($categories as $category)
+                            @forelse($categories as $category)
                                 <tr>
-                                    <th>{{ $category->id }}</th>
-                                    <th>{{ $category->name }}</th>
-                                    <th>{{ $category->status == 1 ? 'Hidden' : 'Visible' }}</th>
-                                    <th>
+                                    <td>{{ $category->id }}</td>
+                                    <td>{{ $category->name }}</td>
+                                    <td>{{ $category->status == 1 ? 'Hidden' : 'Visible' }}</td>
+                                    <td>
                                         <a href="{{ url('admin/category/' . $category->id . '/edit') }}"
-                                            class="btn btn-success">Edit</a>
-                                        <a wire:click="deleteCategory({{ $category->id }})" href="" class="btn btn-danger" data-bs-toggle="modal"
+                                            class="btn btn-sm btn-success">Edit</a>
+                                        <a wire:click="deleteCategory({{ $category->id }})" href=""
+                                            class="btn btn-sm btn-danger" data-bs-toggle="modal"
                                             data-bs-target="#deleteModal">Delete</a>
-                                    </th>
+                                    </td>
                                 </tr>
-                            @endforeach
+                            @empty
+                                <tr>
+                                    <td colspan="7">No Cotegories Available</td>
+                                </tr>
+                            @endforelse
                         </tbody>
                     </table>
                     <div class="mt-2">
@@ -71,11 +77,9 @@
 </div>
 
 @push('script')
-
-<script>
-    window.addEventListener('close-modal', event => {
-        $('#deleteModal').modal('hide');
-    })
-</script>
-
+    <script>
+        window.addEventListener('close-modal', event => {
+            $('#deleteModal').modal('hide');
+        })
+    </script>
 @endpush

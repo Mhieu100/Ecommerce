@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug');
             $table->string('brand')->nullable();
-            $table->mediumText('small-description')->nullable();
+            $table->mediumText('small_description')->nullable();
             $table->longText('description')->nullable();
             $table->integer('original_price');
             $table->integer('selling_price');
@@ -28,7 +28,7 @@ return new class extends Migration
             $table->tinyInteger('status')->default('0')->comment('1=hidden ,0=visible');
             $table->string('meta_title')->nullable();
             $table->mediumText('meta_keywords')->nullable();
-            $table->mediumText('meta-description')->nullable();
+            $table->mediumText('meta_description')->nullable();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();
         });
