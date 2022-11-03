@@ -9,7 +9,7 @@
                         <a href="{{ url('admin/products') }}" class="btn btn-primary text-white btn-sm float-end">Back</a>
                     </h3>
                 </div>
-                <div class="card-body">
+                <div class="card-body  bg-contents">
 
                     @if ($errors->any())
                         <div class="alert alert-warning">
@@ -41,6 +41,11 @@
                                 <button class="nav-link" id="image-tab" data-bs-toggle="tab"
                                     data-bs-target="#image-tab-pane" type="button" role="tab"
                                     aria-controls="image-tab-pane" aria-selected="false">Image</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="color-tab" data-bs-toggle="tab"
+                                    data-bs-target="#color-tab-pane" type="button" role="tab"
+                                    aria-controls="color-tab-pane" aria-selected="false">Color</button>
                             </li>
                         </ul>
                         <div class="tab-content p-3" id="myTabContent">
@@ -98,11 +103,11 @@
                                 aria-labelledby="details-tab" tabindex="0">
                                 <div class="mb-3">
                                     <label for="">Original Price</label>
-                                    <input type="text" name="original_price" class="form-control">
+                                    <input type="number" name="original_price" class="form-control">
                                 </div>
                                 <div class="mb-3">
                                     <label for="">Selling Price</label>
-                                    <input type="text" name="selling_price" class="form-control">
+                                    <input type="number" name="selling_price" class="form-control">
                                 </div>
                                 <div class="mb-3">
                                     <label for="">Quantity</label>
@@ -117,10 +122,31 @@
                                     <input type="checkbox" name="status">
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="image-tab-pane" role="tabpanel"
-                                aria-labelledby="image-tab" tabindex="0">
+                            <div class="tab-pane fade" id="image-tab-pane" role="tabpanel" aria-labelledby="image-tab"
+                                tabindex="0">
                                 <label for="">Upload Product Images</label>
                                 <input type="file" name="image[]" multiple class="form-control">
+                            </div>
+                            <div class="tab-pane fade" id="color-tab-pane" role="tabpanel" aria-labelledby="color-tab"
+                                tabindex="0">
+                                <label for="">Select Color Product</label>
+                                <div class="row">
+                                    @forelse ($colors as $color)
+                                        <div class="col-md-3">
+                                            <div class="p-2 border mb-3">
+                                                Color : <input type="checkbox" name="colors[{{ $color->id }}]"
+                                                    value="{{ $color->id }}">
+                                                {{ $color->name }} <br>
+                                                Quantity <input type="number" name="colorquantity[{{ $color->id }}]"
+                                                    style="width: 70px ;border: 1px solid">
+                                            </div>
+                                        </div>
+                                    @empty
+                                        <div class="col-md-12">
+                                            <h1>No Colors Foud</h1>
+                                        </div>
+                                    @endforelse
+                                </div>
                             </div>
                         </div>
                         <div>

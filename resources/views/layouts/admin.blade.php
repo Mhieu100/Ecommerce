@@ -21,7 +21,11 @@
     <link rel="stylesheet" href="{{ asset('admin/css/style.css') }}">
     <!-- endinject -->
     <link rel="shortcut icon" href="{{ asset('admin/images/favicon.png') }}" />
-
+    <style>
+        .bg-contents{
+            background-color: rgb(48, 235, 226);
+        }
+    </style>
     @livewireStyles
 </head>
 

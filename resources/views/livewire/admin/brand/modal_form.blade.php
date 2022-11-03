@@ -7,7 +7,7 @@
                  <button type="button" wire:click="closeModal" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
              </div>
              <form wire:submit.prevent="storeBrand">
-                 <div class="modal-body">
+                 <div class="modal-body  bg-contents">
                      <div class="mb-3">
                         <label for="">Brand Name</label>
                         <input type="text" wire:model.defer="name" class="form-control">
@@ -49,7 +49,7 @@
                 <button type="button" wire:click="closeModal" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form wire:submit.prevent="updateBrand">
-                <div class="modal-body">
+                <div class="modal-body  bg-contents">
                     <div class="mb-3">
                        <label for="">Brand Name</label>
                        <input type="text" wire:model.defer="name" class="form-control">

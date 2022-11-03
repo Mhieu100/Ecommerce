@@ -10,7 +10,7 @@
                             class="btn btn-primary btn-sm text-white float-end">Back</a>
                     </h3>
                 </div>
-                <div class="card-body">
+                <div class="card-body bg-contents">
                     <form action="{{ url('admin/category') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">

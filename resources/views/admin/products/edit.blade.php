@@ -9,7 +9,7 @@
                         <a href="{{ url('admin/products') }}" class="btn btn-primary text-white btn-sm float-end">Back</a>
                     </h3>
                 </div>
-                <div class="card-body">
+                <div class="card-body  bg-contents">
 
                     @if (session('message'))
                         <div class="alert alert-success">
@@ -106,12 +106,12 @@
                                 aria-labelledby="details-tab" tabindex="0">
                                 <div class="mb-3">
                                     <label for="">Original Price</label>
-                                    <input type="text" name="original_price" value="{{ $product->original_price }}"
+                                    <input type="number" name="original_price" value="{{ $product->original_price }}"
                                         class="form-control">
                                 </div>
                                 <div class="mb-3">
                                     <label for="">Selling Price</label>
-                                    <input type="text" name="selling_price" value="{{ $product->selling_price }}"
+                                    <input type="number" name="selling_price" value="{{ $product->selling_price }}"
                                         class="form-control">
                                 </div>
                                 <div class="mb-3">
