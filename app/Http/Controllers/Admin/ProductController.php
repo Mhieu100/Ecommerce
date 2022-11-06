@@ -10,6 +10,7 @@ use App\Models\ProductImage;;
 
 use App\Models\Category;
 use App\Models\Color;
+use App\Models\ProductColor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
@@ -82,7 +83,9 @@ class ProductController extends Controller
         $categories = Category::all();
         $brands = Brand::all();
         $product = Product::findOrFail($product_id);
-        return view('admin.products.edit', compact('categories', 'brands', 'product'));
+        $product_color =  $product->productColors->pluck('color_id')->toArray();
+        $colors = Color::whereNotIn('id',$product_color)->get();
+        return view('admin.products.edit', compact('categories', 'brands', 'product', 'colors'));
     }
     public function update(ProductFormRequest $request, int $product_id)
     {
@@ -121,6 +124,15 @@ class ProductController extends Controller
                     ]);
                 }
             }
+            if ($request->colors) {
+                foreach ($request->colors as $key => $color) {
+                    $product->productColors()->create([
+                        'product_id' => $product->id,
+                        'color_id' => $color,
+                        'quantity' => $request->colorquantity[$key] ?? 0
+                    ]);
+                }
+            }
             return redirect('admin/products')->with('message', 'Product Update Successfully');
         } else {
             return redirect('admin/products')->with('message', 'No Such Product Id Found');
@@ -147,5 +159,20 @@ class ProductController extends Controller
         }
         $productImage->delete();
         return redirect()->back()->with('message', 'Image Delete Successfully');
+    }
+    public function updateProdColorQty(Request $request, $prod_color_id)
+    {
+        $productColorData = Product::findOrFail($request->product_id)
+                                ->productColors()->where('id', $prod_color_id)->first();
+         $productColorData->update([
+            'quantity' => $request->qty
+         ]);
+         return response()->json(['message' => 'Update qty product color successfully']);
+    }
+    public function deleteProdColor($prod_color_id)
+    {
+        $prodColor = ProductColor::findOrFail($prod_color_id);
+        $prodColor->delete();
+        return response()->json(['message' => 'Delete product color successfully']);
     }
 }

@@ -63,6 +63,7 @@
     <script src="{{ asset('admin/js/dataTables.bootstrap4.js') }}"></script>
     <!-- End custom js for this page-->
 
+    @yield('scripts')
     <script src="{{ asset('admin/js/jquery.cookie.js') }}" type="text/javascript"></script>
     @livewireScripts
     @stack('script')

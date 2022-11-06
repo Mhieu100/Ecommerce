@@ -14,7 +14,7 @@
                     @if (session('message'))
                         <div class="alert alert-success">
 
-                                <div>{{session('message')}}</div>
+                            <div>{{ session('message') }}</div>
 
                         </div>
                     @endif
@@ -43,6 +43,11 @@
                                 <button class="nav-link" id="image-tab" data-bs-toggle="tab"
                                     data-bs-target="#image-tab-pane" type="button" role="tab"
                                     aria-controls="image-tab-pane" aria-selected="false">Image</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="color-tab" data-bs-toggle="tab"
+                                    data-bs-target="#color-tab-pane" type="button" role="tab"
+                                    aria-controls="color-tab-pane" aria-selected="false">Color</button>
                             </li>
                         </ul>
                         <div class="tab-content p-3" id="myTabContent">
@@ -141,7 +146,8 @@
                                             @foreach ($product->productImages as $image)
                                                 <div class="col-lg-3 mb-3">
                                                     <img src="{{ asset($image->image) }}" class="me-4" width="100px">
-                                                    <a href="{{ url('admin/product-image/'.$image->id.'/delete') }}" class="btn btn-sm btn-danger">Remove</a>
+                                                    <a href="{{ url('admin/product-image/' . $image->id . '/delete') }}"
+                                                        class="btn btn-sm btn-danger">Remove</a>
                                                 </div>
                                             @endforeach
                                         </div>
@@ -149,6 +155,65 @@
                                         <h5>No Image Add</h5>
                                     @endif
                                 </div>
+                            </div>
+                            <div class="tab-pane fade" id="color-tab-pane" role="tabpanel" aria-labelledby="color-tab"
+                                tabindex="0">
+                                <h4>Add Color</h4>
+                                <label for="">Select Color Product</label>
+                                <div class="row">
+                                    @forelse ($colors as $color)
+                                        <div class="col-md-3">
+                                            <div class="p-2 border mb-3">
+                                                Color : <input type="checkbox" name="colors[{{ $color->id }}]"
+                                                    value="{{ $color->id }}">
+                                                {{ $color->name }} <br>
+                                                Quantity <input type="number" name="colorquantity[{{ $color->id }}]"
+                                                    style="width: 70px ;border: 1px solid">
+                                            </div>
+                                        </div>
+                                    @empty
+                                        <div class="col-md-12">
+                                            <h1>No Colors Foud</h1>
+                                        </div>
+                                    @endforelse
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-sm table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Color Name</th>
+                                            <th>Quantity</th>
+                                            <th>Delete</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($product->productColors as $prodColor)
+                                            <tr class="prod_color_tr">
+                                                @if ($prodColor->color)
+                                                    <td>{{ $prodColor->color->name }}</td>
+                                                @else
+                                                    <td>Not Color Foud</td>
+                                                @endif
+                                                <td>
+                                                    <div class="input-group mb-3" style="width: 150px">
+                                                        <input type="text"
+                                                            class="productColorQuantity form-control form-control-sm"
+                                                            value="{{ $prodColor->quantity }}">
+                                                        <button type="button"
+                                                            class="updateProductColorBtn btn btn-primary btn-sm text-while"
+                                                            value="{{ $prodColor->id }}">Update</button>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <button type="button"
+                                                        class="deleteProductColorBtn btn btn-danger btn-sm text-while"
+                                                        value="{{ $prodColor->id }}">Delete</button>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                         <div>
@@ -159,4 +224,57 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+        $(document).ready(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $(document).on('click', '.updateProductColorBtn', function() {
+                var product_id = "{{ $product->id }}";
+                var prod_color_id = $(this).val();
+                var qty = $(this).closest('.prod_color_tr').find('.productColorQuantity').val();
+
+                // alert(prod_color_id);
+
+                if (qty <= 0) {
+                    alert('Quantity is required');
+                    return false;
+                }
+
+                var data = {
+                    'product_id': product_id,
+                    'qty': qty,
+                };
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/admin/product-color/' + prod_color_id,
+                    data: data,
+                    success: function(response) {
+                        alert(response.message)
+                    }
+                })
+            });
+            $(document).on('click', '.deleteProductColorBtn', function() {
+                // var product_id = "{{ $product->id }}";
+                var prod_color_id = $(this).val();
+                var thisClick = $(this);
+                thisClick.closest('.prod_color_tr').remove();
+
+                $.ajax({
+                    type: 'GET',
+                    url: '/admin/product-color/' + prod_color_id + '/delete',
+                    success: function(response) {
+                        thisClick.closest('.prod_color_tr').remove();
+                        alert(response.message)
+                    }
+                })
+            });
+        });
+    </script>
 @endsection
