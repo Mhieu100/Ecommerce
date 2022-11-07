@@ -11,6 +11,8 @@ class WishlistCount extends Component
 {
     public $wishlistCount;
 
+    protected $listeners = ['wishlistAddUpdate' => 'checkWishlishCount'];
+
     public function checkWishlishCount()
     {
         if(Auth::check())
