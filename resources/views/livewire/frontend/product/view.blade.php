@@ -38,9 +38,8 @@
                                         {{-- <input type="radio" name="colorSelection" value="{{ $colorItem->id }}">
                                         {{ $colorItem->color->name }} --}}
                                         <label class="colorSelectionLabel"
-                                            style="background-color: {{ $colorItem->color->code }}"
+                                            style="width: 30px;height: 30px;border-radius: 50%;background-color: {{ $colorItem->color->code }}"
                                             wire:click="colorSelected({{ $colorItem->id }})">
-                                            {{ $colorItem->color->name }}
                                         </label>
                                     @endforeach
                                 @endif
