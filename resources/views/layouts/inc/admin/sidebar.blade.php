@@ -45,10 +45,16 @@
                 <span class="menu-title">Colors</span>
             </a>
         </li>
-         <li class="nav-item">
+        <li class="nav-item">
             <a class="nav-link" href="{{ url('admin/sliders') }}">
                 <i class="mdi mdi-view-headline menu-icon"></i>
                 <span class="menu-title">Home Slider</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url('admin/orders') }}">
+                <i class="mdi mdi-view-headline menu-icon"></i>
+                <span class="menu-title">Orders</span>
             </a>
         </li>
         {{-- <li class="nav-item">
