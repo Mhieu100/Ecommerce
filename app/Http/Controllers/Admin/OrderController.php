@@ -45,7 +45,7 @@ class OrderController extends Controller
             ]);
             return redirect('admin/orders/' . $orderId)->with('message', 'Order Status Update');
         } else {
-            return redirect('admin/orders/'.$orderId)->with('message', 'Order Id Not Found');
+            return redirect('admin/orders/' . $orderId)->with('message', 'Order Id Not Found');
         }
     }
 }
