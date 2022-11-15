@@ -115,7 +115,7 @@
                             <label >Update Your Order Status</label>
                             <div class="input-group">
                                 <select name="order_status" class="form-select" id="">
-                                    <option value="">Select Order Status</option>
+                                    <option >Select Order Status</option>
                                     <option value="is progress" {{ Request::get('status') == 'is progress' ? 'selected' : '' }} >Is Progress</option>
                                     <option value="completed" {{ Request::get('status') == 'completed' ? 'selected' : '' }} >Completed</option>
                                     <option value="pending" {{ Request::get('status') == 'pending' ? 'selected' : '' }} >Pending</option>
