@@ -25,6 +25,9 @@
     <link rel="stylesheet" href="{{ asset('assets/css/owl.carousel.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/owl.theme.default.css') }}">
 
+    <!-- Image Pro -->
+    <link rel="stylesheet" href="{{ asset('assets/exzoom/jquery.exzoom.css') }}">
+
     <!-- Bootstrap CSS v5.2.1 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
@@ -70,6 +73,9 @@
 
     <!-- Owl Carousel -->
     <script src="{{ asset('assets/js/owl.carousel.js') }}"></script>
+
+    <!-- Image Pro -->
+    <script src="{{ asset('assets/exzoom/jquery.exzoom.js') }}"></script>
 
     <script>
         window.addEventListener('message', event => {

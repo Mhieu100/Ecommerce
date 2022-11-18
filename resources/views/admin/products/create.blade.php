@@ -14,7 +14,7 @@
                     @if ($errors->any())
                         <div class="alert alert-warning">
                             @foreach ($errors->all() as $error)
-                                <div>{{ $error }}</div>
+                                <li>{{ $error }}</li>
                             @endforeach
                         </div>
                     @endif
@@ -116,6 +116,10 @@
                                 <div class="mb-3">
                                     <label for="">Trending</label>
                                     <input type="checkbox" name="trending">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="">Featured</label>
+                                    <input type="checkbox" name="featured">
                                 </div>
                                 <div class="mb-3">
                                     <label for="">Status</label>

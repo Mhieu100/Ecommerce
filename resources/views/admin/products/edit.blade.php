@@ -130,6 +130,11 @@
                                         {{ $product->trending == '1' ? 'checked' : '' }}>
                                 </div>
                                 <div class="mb-3">
+                                    <label for="">Featured</label>
+                                    <input type="checkbox" name="featured"
+                                        {{ $product->featured == '1' ? 'checked' : '' }}>
+                                </div>
+                                <div class="mb-3">
                                     <label for="">Status</label>
                                     <input type="checkbox" name="status" {{ $product->status == '1' ? 'checked' : '' }}>
                                 </div>

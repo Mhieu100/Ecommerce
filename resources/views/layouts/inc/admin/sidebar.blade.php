@@ -57,6 +57,12 @@
                 <span class="menu-title">Orders</span>
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url('admin/users') }}">
+                <i class="mdi mdi-view-headline menu-icon"></i>
+                <span class="menu-title">User</span>
+            </a>
+        </li>
         {{-- <li class="nav-item">
             <a class="nav-link" href="pages/charts/chartjs.html">
                 <i class="mdi mdi-chart-pie menu-icon"></i>
