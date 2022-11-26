@@ -18,22 +18,62 @@
                             <div class="col-md-6">
                                 <h5>Order Detail</h5>
                                 <hr>
-                                <h6>Order ID : {{ $order->id }} </h6>
-                                <h6>Tracking ID/No. : {{ $order->tracking_no }} </h6>
-                                <h6>Order Create Date : {{ $order->created_at->format('d-m-Y h:i A') }} </h6>
-                                <h6>Payment Mode : {{ $order->payment_mode }} </h6>
-                                <h6 class="border p-2 text-success">
-                                    Order Status Message: <span class="text-uppercase">{{ $order->status_message }}</span>
-                                </h6>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-striped">
+                                        <tbody>
+                                            <tr>
+                                                <td>Order ID</td>
+                                                <td># {{ $order->id }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tracking ID/No.</td>
+                                                <td>{{ $order->tracking_no }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Order Create Date</td>
+                                                <td>{{ $order->created_at->format('d-m-Y h:i A') }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Payment Mode</td>
+                                                <td>{{ $order->payment_mode }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Order Status Message</td>
+                                                <td style="text-transform: uppercase" class="text-success fw-bold">{{ $order->status_message }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                             <div class="col-md-6">
                                 <h5>User Detail</h5>
                                 <hr>
-                                <h6>Fullname : {{ $order->fullname }} </h6>
-                                <h6>Email : {{ $order->email }} </h6>
-                                <h6>Phone : {{ $order->phone }} </h6>
-                                <h6>Address : {{ $order->address }} </h6>
-                                <h6>Pin Code : {{ $order->pincode }} </h6>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-striped">
+                                        <tbody>
+                                            <tr>
+                                                <td>Fullname</td>
+                                                <td>{{ $order->fullname }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Email</td>
+                                                <td>{{ $order->email }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Phone</td>
+                                                <td>{{ $order->phone }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Address</td>
+                                                <td>{{ $order->address }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Pin Code</td>
+                                                <td>{{ $order->pincode }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                         <br>

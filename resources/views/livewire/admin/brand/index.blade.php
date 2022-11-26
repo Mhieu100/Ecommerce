@@ -15,14 +15,13 @@
                             Brand</a>
                     </h3>
                 </div>
-                <div class="card-body">
+                <div class="card-body table-responsive">
                     <table class="table table-bordered table-striped">
                         <thead>
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
                                 <th>Category</th>
-                                <th>Slug</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
@@ -39,15 +38,14 @@
                                          No Category
                                         @endif
                                     </td>
-                                    <td>{{ $brand->slug }}</td>
                                     <td>{{ $brand->status == '1' ? 'hidden' : 'visible' }}</td>
                                     <td>
                                         <a href="" wire:click="editBrand({{ $brand->id }})"
                                             data-bs-toggle="modal" data-bs-target="#updateBrandModal"
-                                            class="btn btn-sm btn-success">Edit</a>
+                                            class="btn btn-sm btn-success text-white">Edit</a>
                                         <a href="" wire:click="deleteBrand({{ $brand->id }})"
                                             data-bs-toggle="modal" data-bs-target="#deleteBrandModal"
-                                            class="btn btn-sm btn-danger">Delete</a>
+                                            class="btn btn-sm btn-danger text-white">Delete</a>
                                     </td>
                                 </tr>
                             @empty

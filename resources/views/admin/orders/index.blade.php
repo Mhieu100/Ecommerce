@@ -12,11 +12,11 @@
                     <form action="" method="get">
                         <div class="row">
                             <div class="col-md-3">
-                                <label for="">Filler by Date</label>
+                                <label class="mb-3">Filler by Date</label>
                                 <input type="date" name="date"  value=" {{ Request::get('status') == '' ? 'selected' : '' }} 'date') ?? date('Y-m-d') }}" class="form-control">
                             </div>
                             <div class="col-md-3">
-                                <label for="">Filler by Status</label>
+                                <label class="mb-3">Filler by Status</label>
                                 <select name="status" class="form-control p-3" id="">
                                     <option value="">Select All Status</option>
                                     <option value="is progress" {{ Request::get('status') == 'is progress' ? 'selected' : '' }} >Is Progress</option>
@@ -27,8 +27,8 @@
                                 </select>
                             </div>
                             <div class="col-md-6">
-                                <br>
-                                <button type="submit" class="btn btn-primary">Filter</button>
+                                <br><br>
+                                <button type="submit" class="btn btn-primary text-white">Filter</button>
                             </div>
                         </div>
                     </form>
@@ -56,7 +56,7 @@
                                         <td>{{ $order->status_message }}</td>
                                         <td>
                                             <a href="{{ url('admin/orders/' . $order->id) }}"
-                                                class="btn btn-primary btn-sm">Vỉew</a>
+                                                class="btn btn-success text-white btn-sm">View</a>
                                         </td>
                                     </tr>
 
@@ -67,7 +67,7 @@
                                 @endforelse
                             </tbody>
                         </table>
-                        <div>
+                        <div class="mt-3">
                             {{ $orders->links() }}
                         </div>
                     </div>

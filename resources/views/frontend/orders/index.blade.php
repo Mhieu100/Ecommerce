@@ -33,7 +33,7 @@
                                             <td>{{ $order->status_message }}</td>
                                             <td>
                                                 <a href="{{ url('orders/' . $order->id) }}"
-                                                    class="btn btn-primary btn-sm">Vỉew</a>
+                                                    class="btn btn-primary btn-sm">View</a>
                                             </td>
                                         </tr>
 

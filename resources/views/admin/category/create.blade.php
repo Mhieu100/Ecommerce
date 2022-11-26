@@ -6,8 +6,7 @@
             <div class="card">
                 <div class="card-header">
                     <h3>Add Category
-                        <a href="{{ url('admin/category') }}"
-                            class="btn btn-primary btn-sm text-white float-end">Back</a>
+                        <a href="{{ url('admin/category') }}" class="btn btn-danger btn-sm text-white float-end">Back</a>
                     </h3>
                 </div>
                 <div class="card-body bg-contents">
@@ -15,66 +14,33 @@
                         @csrf
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="">Name</label>
+                                <label class="mb-3">Name</label>
                                 <input type="text" name="name" class="form-control">
                                 @error('name')
-                                   <small class="text-danger">{{ $message }}</small>
+                                    <small class="text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="">Slug</label>
-                                <input type="text" name="slug" class="form-control">
-                                @error('slug')
-                                   <small class="text-danger">{{ $message }}</small>
-                                @enderror
-                            </div>
-                            <div class="col-md-12 mb-3">
-                                <label for="">Description</label>
-                                <textarea type="text" name="description" class="form-control" row="3"></textarea>
-                                @error('description')
-                                   <small class="text-danger">{{ $message }}</small>
-                                @enderror
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="">Image</label>
+                                <label class="mb-3">Image</label>
                                 <input type="file" name="image" class="form-control">
                                 @error('image')
-                                <small class="text-danger">{{ $message }}</small>
+                                    <small class="text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="">Status</label> <br>
-                                <input type="checkbox" name="status"> <small>Checked = Hidden | Unchecked = Visible</small>
+                                <label class="mb-3">Status</label> <br>
+                                <label class="switch">
+                                    <input type="checkbox" name="status">
+                                    <span class="slider round"></span>
+                                </label>
+                                 <small>Checked = Hidden | Unchecked = Visible</small>
                                 @error('status')
-                                <small class="text-danger">{{ $message }}</small>
+                                    <small class="text-danger">{{ $message }}</small>
                                 @enderror
+
                             </div>
                             <div class="col-md-12 mb-3">
-                                <h4>SEO Tags</h4>
-                            </div>
-                            <div class="col-md-12 mb-3">
-                                <label for="">Meta Title</label>
-                                <input type="text" name="meta_title" class="form-control">
-                                @error('meta_title')
-                                   <small class="text-danger">{{ $message }}</small>
-                                @enderror
-                            </div>
-                            <div class="col-md-12 mb-3">
-                                <label for="">Meta Keyword</label>
-                                <textarea type="text" name="meta_keywords" class="form-control" row="3"></textarea>
-                                @error('meta_keywords')
-                                   <small class="text-danger">{{ $message }}</small>
-                                @enderror
-                            </div>
-                            <div class="col-md-12 mb-3">
-                                <label for="">Meta Description</label>
-                                <textarea type="text" name="meta_description" class="form-control" row="3"></textarea>
-                                @error('meta_description')
-                                   <small class="text-danger">{{ $message }}</small>
-                                @enderror
-                            </div>
-                            <div class="col-md-12 mb-3">
-                                <button type="submit" class="btn btn-primary float-end">Save</button>
+                                <button type="submit" class="btn btn-primary text-white float-end">Save</button>
                             </div>
                         </div>
                     </form>

@@ -1,132 +1,174 @@
 <div>
 
-    <div class="py-3 py-md-4 checkout">
-        <div class="container">
-            <h4>Checkout</h4>
-            <hr>
-            @if ($this->totalProductAmount != '0')
-                <div class="row">
-                    <div class="col-md-12 mb-4">
-                        <div class="shadow bg-white p-3">
-                            <h4 class="text-primary">
-                                Item Total Amount :
-                                <span class="float-end">{{ $totalProductAmount }}</span>
-                            </h4>
-                            <hr>
-                            <small>* Items will be delivered in 3 - 5 days.</small>
-                            <br />
-                            <small>* Tax and other charges are included ?</small>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="shadow bg-white p-3">
-                            <h4 class="text-primary">
-                                Basic Information
-                            </h4>
-                            <hr>
+    <section class="h-100 h-custom">
+        <div class="container h-100 mt-3">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col">
+                    <div class="card shopping-cart" style="border-radius: 15px;">
+                        <div class="card-body text-black">
 
-                            <form action="" method="POST">
+                            @if ($this->totalProductAmount != '0')
                                 <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label>Full Name</label>
-                                        <input type="text" wire:model.defer.defer="fullname" id="fullname"
-                                            class="form-control" placeholder="Enter Full Name" readonly />
-                                        @error('fullname')
-                                            <small class="text-danger">{{ $message }}</small>
-                                        @enderror
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label>Phone Number</label>
-                                        <input type="number" wire:model.defer="phone" id="phone"
-                                            class="form-control" placeholder="Enter Phone Number" />
-                                        @error('phone')
-                                            <small class="text-danger">{{ $message }}</small>
-                                        @enderror
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label>Email Address</label>
-                                        <input type="email" wire:model.defer="email" id="email"
-                                            class="form-control" placeholder="Enter Email Address" readonly />
-                                        @error('email')
-                                            <small class="text-danger">{{ $message }}</small>
-                                        @enderror
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label>Pin-code (Zip-code)</label>
-                                        <input type="number" wire:model.defer="pincode" id="pincode"
-                                            class="form-control" placeholder="Enter Pin-code" />
-                                        @error('pincode')
-                                            <small class="text-danger">{{ $message }}</small>
-                                        @enderror
-                                    </div>
-                                    <div class="col-md-12 mb-3">
-                                        <label>Full Address</label>
-                                        <textarea wire:model.defer="address" id="address" class="form-control" rows="2"></textarea>
-                                        @error('address')
-                                            <small class="text-danger">{{ $message }}</small>
-                                        @enderror
-                                    </div>
-                                    <div class="col-md-12 mb-3" wire:ignore>
-                                        <label>Select Payment Mode: </label>
-                                        <div class="d-md-flex align-items-start">
-                                            <div class="nav col-md-3 flex-column nav-pills me-3" id="v-pills-tab"
-                                                role="tablist" aria-orientation="vertical">
-                                                <button wire:loading.attr="disabled"
-                                                    class="nav-link fw-bold border active" id="cashOnDeliveryTab-tab"
-                                                    data-bs-toggle="pill" data-bs-target="#cashOnDeliveryTab"
-                                                    type="button" role="tab" aria-controls="cashOnDeliveryTab"
-                                                    aria-selected="true">Cash on Delivery</button>
-                                                <button wire:loading.attr="disabled" class="nav-link fw-bold border"
-                                                    id="onlinePayment-tab" data-bs-toggle="pill"
-                                                    data-bs-target="#onlinePayment" type="button" role="tab"
-                                                    aria-controls="onlinePayment" aria-selected="false">Online
-                                                    Payment</button>
-                                            </div>
-                                            <div class="tab-content col-md-9" id="v-pills-tabContent">
-                                                <div class="tab-pane fade active show" id="cashOnDeliveryTab"
-                                                    role="tabpanel" aria-labelledby="cashOnDeliveryTab-tab"
-                                                    tabindex="0">
-                                                    <h6>Cash on Delivery Mode</h6>
-                                                    <hr />
-                                                    <button wire:loading.attr="disabled" type="button"
-                                                        wire:click="codOrder" class="btn btn-primary">
-                                                        <span wire:target="codOrder" wire:loading.remove>
-                                                            Place Order (Cash on Delivery)
-                                                        </span>
-                                                        <span wire:target="codOrder" wire:loading>
-                                                            Placing Order ...
-                                                        </span>
-                                                    </button>
+                                    <div class="col-lg-6 px-5 py-4">
 
+                                        <h3 class="mb-5 pt-2 text-center fw-bold text-uppercase">Your products</h3>
+
+                                        @foreach ($cart as $itemCart)
+                                            <div class="d-flex align-items-center mb-4">
+                                                <div class="flex-shrink-0">
+                                                    <img src="{{ asset($itemCart->product->productImages[0]->image) }}"
+                                                        class="img-fluid" style="width: 150px;"
+                                                        alt="{{ $itemCart->product->name }}">
                                                 </div>
-                                                <div class="tab-pane fade" id="onlinePayment" role="tabpanel"
-                                                    aria-labelledby="onlinePayment-tab" tabindex="0">
-                                                    <h6>Online Payment Mode</h6>
-                                                    <hr />
-                                                    {{-- <button wire:loading.attr="disabled" type="button" class="btn btn-warning">Pay Now (Online
-                                                        Payment)</button> --}}
-                                                    <div>
-                                                        <div id="paypal-button-container"></div>
+                                                <div class="flex-grow-1 ms-3">
+                                                    <h5 class="text-primary">{{ $itemCart->product->name }}</h5>
+                                                    <div class="d-flex">
+                                                        <h6 style="color: rgb(131, 131, 131);">Color:
+                                                            @if ($itemCart->productColor)
+                                                                <label
+                                                                    style="width: 15px; height: 15px; border-radius: 50%; background-color: {{ $itemCart->productColor->color->code }}; margin-left: 5px"></label>
+                                                            @else
+                                                                <label class="price">No Color</label>
+                                                            @endif
+                                                    </div>
+
+                                                    </h6>
+                                                    <h6 style="color: rgb(131, 131, 131);">Price:
+                                                        ${{ $itemCart->product->selling_price }}</h6>
+                                                    <h6>Quantity:
+                                                        ${{ $itemCart->product->selling_price * $itemCart->quantity }}
+                                                    </h6>
+                                                </div>
+                                            </div>
+                                        @endforeach
+
+                                        <hr class="mb-4" style="height: 2px; background-color: #1266f1; opacity: 1;">
+
+                                        <div class="d-flex justify-content-between p-2 mb-2"
+                                            style="background-color: #e1f5fe;">
+                                            <h5 class="fw-bold mb-0">Total:</h5>
+                                            <h5 class="fw-bold mb-0">${{ $totalProductAmount }}</h5>
+                                        </div>
+                                        <hr>
+                                        <small>* Items will be delivered in 3 - 5 days.</small>
+                                        <br />
+                                        <small>* Tax and other charges are included ?</small>
+
+                                    </div>
+                                    <div class="col-lg-6 px-5 py-4">
+
+                                        <h3 class="mb-4 pt-2 text-center fw-bold text-uppercase">Information</h3>
+
+                                        <form action="" method="POST" class="mb-3">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="fullname">Full Name</label>
+                                                <input type="text" wire:model.defer.defer="fullname" id="fullname"
+                                                    class="form-control" placeholder="Enter Full Name" readonly />
+
+                                                @error('fullname')
+                                                    <small class="text-danger">{{ $message }}</small>
+                                                @enderror
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label" for="email">Email</label>
+                                                <input type="email" wire:model.defer="email" id="email"
+                                                    class="form-control" placeholder="Enter Email Address" readonly />
+
+                                                @error('email')
+                                                    <small class="text-danger">{{ $message }}</small>
+                                                @enderror
+                                            </div>
+                                            <div class="mb-2">
+                                                <div class="row">
+                                                    <div class="col-md-6 mb-3">
+                                                        <label class="form-label" for="phone">Phone</label>
+                                                        <input type="number" wire:model.defer="phone" id="phone"
+                                                            class="form-control" placeholder="Enter Phone Number"/>
+
+                                                        @error('phone')
+                                                            <small class="text-danger">{{ $message }}</small>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="col-md-6 mb-3">
+                                                        <label class="form-label" for="pincode">Pin-Code
+                                                            (Zip-Code)</label>
+                                                        <input type="number" wire:model.defer="pincode" id="pincode"
+                                                            class="form-control" placeholder="Enter Pin-code"/>
+
+                                                        @error('pincode')
+                                                            <small class="text-danger">{{ $message }}</small>
+                                                        @enderror
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                            <label class="form-label" for="address">Address</label>
+                                            <textarea wire:model.defer="address" id="address" class="form-control" rows="2"></textarea>
+
+                                            @error('address')
+                                                <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+
+                                            <div class="row mt-3" wire:ignore>
+                                                <h5>Select Payment Mode:</h5>
+                                                <div class="col-3">
+                                                    <div class="nav flex-column nav-pills text-center" id="v-pills-tab"
+                                                        role="tablist" aria-orientation="vertical">
+                                                        <a wire:loading.attr="disabled" class="nav-link active"
+                                                            id="v-pills-home-tab" data-mdb-toggle="pill"
+                                                            href="#v-pills-home" role="tab"
+                                                            aria-controls="v-pills-home" aria-selected="true">COD</a>
+                                                        <a class="nav-link" wire:loading.attr="disabled"
+                                                            class="nav-link" id="v-pills-profile-tab"
+                                                            data-mdb-toggle="pill" href="#v-pills-profile"
+                                                            role="tab" aria-controls="v-pills-profile"
+                                                            aria-selected="false">Online</a>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-9">
+                                                    <div class="tab-content col-md-9" id="v-pills-tabContent">
+                                                        <div class="tab-pane fade show active" id="v-pills-home"
+                                                            role="tabpanel" aria-labelledby="v-pills-home-tab">
+                                                            <h6>Cash on Delivery Mode</h6>
+                                                            <hr />
+                                                            <button wire:loading.attr="disabled" type="button"
+                                                                wire:click="codOrder" class="btn btn-primary">
+                                                                <span wire:target="codOrder" wire:loading.remove>
+                                                                    Place Order (Cash on Delivery)
+                                                                </span>
+                                                                <span wire:target="codOrder" wire:loading>
+                                                                    Placing Order ...
+                                                                </span>
+                                                            </button>
+
+                                                        </div>
+                                                        <div class="tab-pane fade" id="v-pills-profile"
+                                                            role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                                                            <h6>Online Payment Mode</h6>
+                                                            <hr />
+                                                            <div>
+                                                                <div id="paypal-button-container"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
-                            </form>
+                            @else
+                                <div class="card card-body shadow text-center mt-4 mb-4">
+                                    <h3 class="mt-3 mb-4">No Product In Cart To CheckOut</h3>
+                                    <a href="{{ url('/home') }}" class="btn btn-danger">Shoping Now</a>
+                                </div>
+                            @endif
+
                         </div>
                     </div>
                 </div>
-            @else
-                <div class="card card-body shadow">
-                    <h4>No Product In Cart To CheckOut</h4>
-                    <a href="{{ url('/collections') }}" class="btn btn-warning">Shoping Now</a>
-                </div>
-            @endif
-
+            </div>
         </div>
-    </div>
-
+    </section>
 
 </div>
 
@@ -173,8 +215,7 @@
                     // Successful capture! For dev/demo purposes:
                     console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
                     const transaction = orderData.purchase_units[0].payments.captures[0];
-                    if(transaction.status == "COMPLETED")
-                    {
+                    if (transaction.status == "COMPLETED") {
                         Livewire.emit('transactionEmit', transaction.id);
                     }
                     // alert(

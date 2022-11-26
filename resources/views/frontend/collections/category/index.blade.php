@@ -13,7 +13,7 @@
                 @forelse ($categories as $category)
                     <div class="col-6 col-md-3">
                         <div class="category-card">
-                            <a href="{{ url('/collections/' . $category->slug) }}">
+                            <a href="{{ url('/collections/' . $category->name) }}">
                                 <div class="category-card-img">
                                     <img src="{{ asset("$category->image") }}" class="w-100" alt="Laptop">
                                 </div>
@@ -28,7 +28,6 @@
                         <h5>No Categories Available</h5>
                     </div>
                 @endforelse
-
             </div>
         </div>
     </div>

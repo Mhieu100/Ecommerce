@@ -7,9 +7,11 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="icon" href="{{ asset('assets/img/favcion.png') }}" type="image/x-icon" />
+    <title>Admin Website</title>
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{ asset('admin/vendors/mdi/css/materialdesignicons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/vendors/base/vendor.bundle.base.css') }}">
@@ -23,7 +25,10 @@
     <link rel="shortcut icon" href="{{ asset('admin/images/favicon.png') }}" />
     <style>
         .bg-contents{
-            background-color: rgb(48, 235, 226);
+            background-color: rgb(157, 158, 158);
+        }
+        .sidebar .nav .nav-item.active{
+            background-color: #e9e9e9;
         }
     </style>
     @livewireStyles

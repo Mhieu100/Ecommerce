@@ -19,8 +19,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::all();
-        return view('admin.products.index', compact('products'));
+        return view('admin.products.index');
     }
     public function create()
     {
@@ -37,9 +36,9 @@ class ProductController extends Controller
         $product = $category->products()->create([
             'category_id' => $validatedData['category_id'],
             'name' => $validatedData['name'],
-            'slug' => Str::slug($validatedData['slug']),
+
             'brand' => $validatedData['brand'],
-            'small_description' => $validatedData['small_description'],
+
             'description' => $validatedData['description'],
             'original_price' => $validatedData['original_price'],
             'selling_price' => $validatedData['selling_price'],
@@ -47,9 +46,6 @@ class ProductController extends Controller
             'trending' => $request->trending == true ? '1' : '0',
             'featured' => $request->featured == true ? '1' : '0',
             'status' => $request->status == true ? '1' : '0',
-            'meta_title' => $validatedData['meta_title'],
-            'meta_keywords' => $validatedData['meta_keywords'],
-            'meta_description' => $validatedData['meta_description'],
         ]);
 
         if ($request->hasFile('image')) {
@@ -97,9 +93,9 @@ class ProductController extends Controller
             $product->update([
                 'category_id' => $validatedData['category_id'],
                 'name' => $validatedData['name'],
-                'slug' => Str::slug($validatedData['slug']),
+
                 'brand' => $validatedData['brand'],
-                'small_description' => $validatedData['small_description'],
+
                 'description' => $validatedData['description'],
                 'original_price' => $validatedData['original_price'],
                 'selling_price' => $validatedData['selling_price'],
@@ -107,9 +103,7 @@ class ProductController extends Controller
                 'trending' => $request->trending == true ? '1' : '0',
                 'featured' => $request->featured == true ? '1' : '0',
                 'status' => $request->status == true ? '1' : '0',
-                'meta_title' => $validatedData['meta_title'],
-                'meta_keywords' => $validatedData['meta_keywords'],
-                'meta_description' => $validatedData['meta_description'],
+
             ]);
 
             if ($request->hasFile('image')) {

@@ -1,66 +1,53 @@
 <div>
 
-    <div class="py-3 py-md-5 bg-light">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="shopping-cart">
-
-                        <div class="cart-header d-none d-sm-none d-mb-block d-lg-block">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <h4>Products</h4>
-                                </div>
-                                <div class="col-md-2">
-                                    <h4>Price</h4>
-                                </div>
-                                <div class="col-md-2">
-                                    <h4>Remove</h4>
+    <div class="container h-100 py-5">
+        <h4 style="text-align: center;" class="mb-3">Wish List</h4>
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-10">
+                @forelse ($wishlist as $itemWishlist)
+                    @if ($itemWishlist->product)
+                        <div class="card rounded-3 mb-4">
+                            <div class="card-body p-3">
+                                <div class="row d-flex justify-content-between align-items-center">
+                                    <div class="col-md-2 col-lg-2">
+                                        <a
+                                            href="{{ url('collections/' . $itemWishlist->product->category->slug . '/' . $itemWishlist->product->slug) }}">
+                                            <img src="{{ $itemWishlist->product->productImages[0]->image }}"
+                                                class="img-fluid rounded-3" alt="{{ $itemWishlist->product->name }}">
+                                        </a>
+                                    </div>
+                                    <div class="col-md-3 col-lg-5">
+                                        <a
+                                            href="{{ url('collections/' . $itemWishlist->product->category->slug . '/' . $itemWishlist->product->slug) }}">
+                                            <h4 class="lead fw-bold mb-2">{{ $itemWishlist->product->name }}</h4>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-3 col-lg-2">
+                                        <h5 class="mb-0">${{ $itemWishlist->product->selling_price }}</h5>
+                                    </div>
+                                    <div class="col-md-1 col-lg-3 text-end">
+                                        <button type="button" href=""
+                                            wire:click="removeWishlish({{ $itemWishlist->id }})"
+                                            class="btn btn-danger btn-sm me-1 mb-2">
+                                            <span wire:loading.remove
+                                                wire:target="removeWishlish({{ $itemWishlist->id }})">
+                                                <i class="fa fa-trash"></i> Remove
+                                            </span>
+                                            <span wire:loading wire:target="removeWishlish({{ $itemWishlist->id }})">
+                                                <i class="fa fa-trash"></i> Removing</span>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        @forelse ($wishlist as $itemWishlist)
-                            @if ($itemWishlist->product)
-                                <div class="cart-item">
-                                    <div class="row">
-                                        <div class="col-md-6 my-auto">
-                                            <a
-                                                href="{{ url('collections/' . $itemWishlist->product->category->slug . '/' . $itemWishlist->product->slug) }}">
-                                                <label class="product-name">
-                                                    <img src="{{ $itemWishlist->product->productImages[0]->image }}"
-                                                        style="width: 50px; height: 50px"
-                                                        alt="{{ $itemWishlist->product->name }}">
-                                                    {{ $itemWishlist->product->name }}
-                                                </label>
-                                            </a>
-                                        </div>
-                                        <div class="col-md-2 my-auto">
-                                            <label class="price">{{ $itemWishlist->product->selling_price }}</label>
-                                        </div>
-                                        <div class="col-md-2 col-5 my-auto">
-                                            <div class="remove">
-                                                <button type="button" href=""
-                                                    wire:click="removeWishlish({{ $itemWishlist->id }})"
-                                                    class="btn btn-danger btn-sm">
-                                                    <span wire:loading.remove
-                                                        wire:target="removeWishlish({{ $itemWishlist->id }})">
-                                                        <i class="fa fa-trash"></i> Remove
-                                                    </span>
-                                                    <span wire:loading
-                                                        wire:target="removeWishlish({{ $itemWishlist->id }})"> <i
-                                                            class="fa fa-trash"></i> Removing</span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endif
-
-                        @empty
-                            <h4>No Wishlist Add</h4>
-                        @endforelse
+                    @endif
+                @empty
+                    <div class="card rounded-3 mb-4">
+                        <div class="card-body p-3">
+                            <h4 class="p-3 text-center">No Wishlist Add</h4>
+                        </div>
                     </div>
-                </div>
+                @endforelse
             </div>
         </div>
     </div>

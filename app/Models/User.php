@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class User extends Authenticatable
 {
@@ -23,6 +24,16 @@ class User extends Authenticatable
         'password',
         'role_as',
     ];
+
+    /**
+     * Get the user associated with the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function userDetail(): HasOne
+    {
+        return $this->hasOne(UserDetail::class, 'user_id', 'id');
+    }
 
     /**
      * The attributes that should be hidden for serialization.
@@ -42,4 +53,5 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
 }

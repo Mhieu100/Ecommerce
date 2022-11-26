@@ -26,8 +26,8 @@ class CategoryController extends Controller
 
         $category = new Category;
         $category->name = $validatedData['name'];
-        $category->slug = Str::slug($validatedData['slug']);
-        $category->description = $validatedData['description'];
+        // $category->slug = Str::slug($validatedData['slug']);
+        // $category->description = $validatedData['description'];
         $uploadPath = 'uploads/category/';
         if($request->hasFile('image'))
         {
@@ -38,9 +38,9 @@ class CategoryController extends Controller
             $category->image =  $uploadPath.$filename;
         }
         $category->status = $request->status == true ? '1' : '0';
-        $category->meta_title = $validatedData['meta_title'];
-        $category->meta_keywords = $validatedData['meta_keywords'];
-        $category->meta_description = $validatedData['meta_description'];
+        // $category->meta_title = $validatedData['meta_title'];
+        // $category->meta_keywords = $validatedData['meta_keywords'];
+        // $category->meta_description = $validatedData['meta_description'];
         $category->save();
         return redirect('admin/category/')->with('message', 'Category Add Successfully');
     }
@@ -55,8 +55,8 @@ class CategoryController extends Controller
         $validatedData = $request->validated();
 
         $category->name = $validatedData['name'];
-        $category->slug = Str::slug($validatedData['slug']);
-        $category->description = $validatedData['description'];
+        // $category->slug = Str::slug($validatedData['slug']);
+        // $category->description = $validatedData['description'];
         $uploadPath = 'uploads/category/';
         if($request->hasFile('image'))
         {
@@ -72,9 +72,9 @@ class CategoryController extends Controller
             $category->image =  $uploadPath.$filename;
         }
         $category->status = $request->status == true ? '1' : '0';
-        $category->meta_title = $validatedData['meta_title'];
-        $category->meta_keywords = $validatedData['meta_keywords'];
-        $category->meta_description = $validatedData['meta_description'];
+        // $category->meta_title = $validatedData['meta_title'];
+        // $category->meta_keywords = $validatedData['meta_keywords'];
+        // $category->meta_description = $validatedData['meta_description'];
         $category->update();
         return redirect('admin/category/')->with('message', 'Category Edit Successfully');
     }

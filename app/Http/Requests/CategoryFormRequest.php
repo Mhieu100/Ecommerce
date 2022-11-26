@@ -28,29 +28,29 @@ class CategoryFormRequest extends FormRequest
                 'required',
                 'string'
             ],
-            'slug' => [
-                'required',
-                'string'
-            ],
-            'description' => [
-                'required'
-            ],
+            // 'slug' => [
+            //     'required',
+            //     'string'
+            // ],
+            // 'description' => [
+            //     'required'
+            // ],
             'image' => [
                 'nullable',
                 'mimes:jpg,jpeg,png,gif'
             ],
-            'meta_title' => [
-                'required',
-                'string'
-            ],
-            'meta_keywords' => [
-                'required',
-                'string'
-            ],
-            'meta_description' => [
-                'required',
-                'string'
-            ],
+            // 'meta_title' => [
+            //     'required',
+            //     'string'
+            // ],
+            // 'meta_keywords' => [
+            //     'required',
+            //     'string'
+            // ],
+            // 'meta_description' => [
+            //     'required',
+            //     'string'
+            // ],
         ];
     }
 }

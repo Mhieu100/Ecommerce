@@ -35,12 +35,13 @@
                             Category</a>
                     </h3>
                 </div>
-                <div class="card-body">
+                <div class="card-body table-responsive">
                     <table class="table table-bordered table-striped">
                         <thead>
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
+                                <th>Image</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
@@ -50,12 +51,13 @@
                                 <tr>
                                     <td>{{ $category->id }}</td>
                                     <td>{{ $category->name }}</td>
+                                    <td><img src="{{ asset("$category->image") }}"/></td>
                                     <td>{{ $category->status == 1 ? 'Hidden' : 'Visible' }}</td>
                                     <td>
                                         <a href="{{ url('admin/category/' . $category->id . '/edit') }}"
-                                            class="btn btn-sm btn-success">Edit</a>
+                                            class="btn btn-sm btn-success text-white">Edit</a>
                                         <a wire:click="deleteCategory({{ $category->id }})" href=""
-                                            class="btn btn-sm btn-danger" data-bs-toggle="modal"
+                                            class="btn btn-sm btn-danger  text-white" data-bs-toggle="modal"
                                             data-bs-target="#deleteModal">Delete</a>
                                     </td>
                                 </tr>

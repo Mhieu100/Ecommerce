@@ -15,7 +15,7 @@
                             Users</a>
                     </h3>
                 </div>
-                <div class="card-body">
+                <div class="card-body table-responsive">
                     <table class="table table-bordered table-striped">
                         <thead>
                             <tr>
@@ -40,8 +40,11 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <a href="{{ url('admin/users/' . $user->id . '/edit') }}" class="btn btn-sm btn-primary">Edit</a>
-                                        <a href="{{ url('admin/users/' . $user->id . '/delete') }}" onclick="return confim('Are you sure, you want to delete this data?')" class="btn btn-sm btn-danger">Delete</a>
+                                        <a href="{{ url('admin/users/' . $user->id . '/edit') }}"
+                                            class="btn btn-sm btn-success text-white">Edit</a>
+                                        <a href="{{ url('admin/users/' . $user->id . '/delete') }}"
+                                            onclick="return confim('Are you sure, you want to delete this data?')"
+                                            class="btn btn-sm btn-danger text-white">Delete</a>
                                     </td>
                                 </tr>
                             @empty

@@ -15,7 +15,7 @@
                             Slider</a>
                     </h3>
                 </div>
-                <div class="card-body">
+                <div class="card-body table-responsive">
                     <table class="table table-bordered table-striped">
                         <thead>
                             <tr>
@@ -31,15 +31,15 @@
                            @foreach ($sliders as $slider)
                             <tr>
                                 <td>{{ $slider->id }}</td>
-                                <td>{{ $slider->title }}</td>
-                                <td>{{ $slider->description }}</td>
+                                <td style="width: 15%">{{ $slider->title }}</td>
+                                <td style="width: 45%">{{ $slider->description }}</td>
                                 <td>
                                     <img src="{{ asset("$slider->image") }}" style="width: 70px; height: 70px" alt="">
                                 </td>
                                 <td>{{ $slider->status == '0' ? 'Visible' : 'Hidden' }}</td>
                                 <td>
-                                        <a href="{{ url('admin/sliders/' . $slider->id . '/edit') }}" class="btn btn-sm btn-primary">Edit</a>
-                                        <a href="{{ url('admin/sliders/' . $slider->id . '/delete') }}" onclick="return confim('Are you sure, you want to delete this data?')" class="btn btn-sm btn-danger">Delete</a>
+                                        <a href="{{ url('admin/sliders/' . $slider->id . '/edit') }}" class="btn btn-sm btn-success text-white">Edit</a>
+                                        <a href="{{ url('admin/sliders/' . $slider->id . '/delete') }}" onclick="return confim('Are you sure, you want to delete this data?')" class="btn btn-sm btn-danger text-white">Delete</a>
                                     </td>
                             </tr>
                            @endforeach

@@ -1,118 +1,132 @@
 <div>
-    <div class="py-3 py-md-5 bg-light">
+
+    <section class="h-100 gradient-custom">
         <div class="container">
-
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="shopping-cart">
-
-                        <div class="cart-header d-none d-sm-none d-mb-block d-lg-block">
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <h4>Products</h4>
-                                </div>
-                                <div class="col-md-2">
-                                    <h4>Color</h4>
-                                </div>
-                                <div class="col-md-2">
-                                    <h4>Price</h4>
-                                </div>
-                                <div class="col-md-2">
-                                    <h4>Total</h4>
-                                </div>
-                                <div class="col-md-2">
-                                    <h4>Quantity</h4>
-                                </div>
-                                <div class="col-md-2">
-                                    <h4>Remove</h4>
-                                </div>
-                            </div>
+            <div class="row d-flex justify-content-center mt-5">
+                <div class="col-md-8">
+                    <div class="card mb-4">
+                        <div class="card-header py-3">
+                            <h5 class="mb-0">My Cart</h5>
                         </div>
-
-                        @forelse ($cart as $itemCart)
-                            @if ($itemCart->product)
-                                <div class="cart-item">
+                        <div class="card-body">
+                            @forelse ($cart as $itemCart)
+                                @if ($itemCart->product)
                                     <div class="row">
-                                        <div class="col-md-2 my-auto">
+                                        <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
+                                            <div class="bg-image hover-overlay hover-zoom ripple rounded"
+                                                data-mdb-ripple-color="light">
+                                                @if ($itemCart->product->productImages)
+                                                    <img src="{{ asset($itemCart->product->productImages[0]->image) }}"
+                                                        class="w-100" alt="{{ $itemCart->product->name }}" />
+                                                @endif
+                                                <a
+                                                    href="{{ url('collections/' . $itemCart->product->category->slug . '/' . $itemCart->product->slug) }}">
+                                                    <div class="mask"
+                                                        style="background-color: rgba(251, 251, 251, 0.2)"></div>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
                                             <a
                                                 href="{{ url('collections/' . $itemCart->product->category->slug . '/' . $itemCart->product->slug) }}">
-                                                <label class="product-name">
-                                                    @if ($itemCart->product->productImages)
-                                                        <img src="{{ asset($itemCart->product->productImages[0]->image) }}"
-                                                            style="width: 50px; height: 50px" alt="">
-                                                    @endif
-                                                    {{ $itemCart->product->name }}
-                                                </label>
+                                                <p><strong>{{ $itemCart->product->name }}</strong></p>
                                             </a>
-                                        </div>
-                                        <div class="col-md-2 my-auto">
-                                            @if ($itemCart->productColor)
-                                                <label class="price"
-                                                    style="width: 30px; height: 30px; border-radius: 50%; background-color: {{ $itemCart->productColor->color->code }}"></label>
-                                            @else
-                                                <label class="price">No Color</label>
-                                            @endif
-                                        </div>
-                                        <div class="col-md-2 my-auto">
-                                            <label class="price">{{ $itemCart->product->selling_price }}</label>
-                                        </div>
-                                        <div class="col-md-2 my-auto">
-                                            <label class="price">{{ $itemCart->product->selling_price * $itemCart->quantity }}</label>
-                                            @php
-                                                $totalPrice += $itemCart->product->selling_price * $itemCart->quantity
-                                            @endphp
-                                        </div>
-                                        <div class="col-md-2 col-7 my-auto">
-                                            <div class="quantity">
-                                                <div class="input-group">
-                                                    <button class="btn btn1" wire:loading.attr="disabled" wire:click="decrementQuantity({{$itemCart->id}})"><i
-                                                            class="fa fa-minus"></i></button>
-                                                    <input type="text"
-                                                        value="{{ $itemCart->quantity }}" readonly
-                                                        class="input-quantity" />
-                                                    <button class="btn btn1" wire:loading.attr="disabled" wire:click="incrementQuantity({{$itemCart->id}})"><i
-                                                            class="fa fa-plus"></i></button>
-                                                </div>
+                                            <div class="d-flex">
+                                                <p>Color </p>
+                                                @if ($itemCart->productColor)
+                                                    <label
+                                                        style="width: 25px; height: 25px; border-radius: 50%; background-color: {{ $itemCart->productColor->color->code }}; margin-left: 10px;"></label>
+                                                @else
+                                                    <label class="price">No Color</label>
+                                                @endif
                                             </div>
+                                            <p>Price: ${{ $itemCart->product->selling_price }}</p>
+                                            <button type="button" wire:loading.attr="disabled"
+                                                wire:click="removeItemCart({{ $itemCart->id }})"
+                                                class="btn btn-danger btn-sm me-1 mb-2">
+                                                <span wire:loading.remove
+                                                    wire:target="removeItemCart({{ $itemCart->id }})">
+                                                    <i class="fa fa-trash"></i>
+                                                </span>
+                                                <span wire:loading wire:target="removeItemCart({{ $itemCart->id }})">
+                                                    <i class="fa fa-trash"></i>
+                                                </span>
+                                            </button>
                                         </div>
-                                        <div class="col-md-2 col-5 my-auto">
-                                            <div class="remove">
-                                                <button type="button" wire:loading.attr="disabled" wire:click="removeItemCart({{ $itemCart->id }})" class="btn btn-danger btn-sm">
-                                                    <span wire:loading.remove wire:target="removeItemCart({{ $itemCart->id }})">
-                                                         <i class="fa fa-trash"></i> Remove
-                                                    </span>
-                                                    <span wire:loading wire:target="removeItemCart({{ $itemCart->id }})">
-                                                         <i class="fa fa-trash"></i> Removing
-                                                    </span>
-                                                </button>
+
+                                        <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+
+                                            <div class="d-flex mb-4" style="max-width: 300px">
+
+                                                <button class="btn btn-danger px-3" wire:loading.attr="disabled"
+                                                    wire:click="decrementQuantity({{ $itemCart->id }})"><i
+                                                        class="fa fa-minus"></i></button>
+                                                <input type="text" value="{{ $itemCart->quantity }}"
+                                                    class="text-center"
+                                                    style="width: 150px; border: none; outline: none; background-color: hsl(0, 1%, 74%)" />
+                                                <button class="btn btn-danger px-3" wire:loading.attr="disabled"
+                                                    wire:click="incrementQuantity({{ $itemCart->id }})"><i
+                                                        class="fa fa-plus"></i></button>
                                             </div>
+                                            <p class="text-start text-md-center">
+                                                Quantity: <strong>
+                                                    ${{ $itemCart->product->selling_price * $itemCart->quantity }}
+                                                    @php
+                                                        $totalPrice += $itemCart->product->selling_price * $itemCart->quantity;
+                                                    @endphp
+                                                </strong>
+                                            </p>
                                         </div>
                                     </div>
+                                    <hr class="my-4" />
+                                @endif
+                            @empty
+                                <div>
+                                    No Product In Cart
                                 </div>
-                            @endif
-                        @empty
-                            <div>
-                                No Product In Cart
-                            </div>
-                        @endforelse
-                        <div class="row">
-                            <div class="col-md-8 my-md-auto mt-3">
-                                <h4>Get the best deals & Offers <a href="{{ url('/collections') }}">Shop Now</a></h4>
-                            </div>
-                            <div class="col-md-4 mt-3">
-                                <div class="shadow-sm bg-white p-3">
-                                    <h4>Total:
-                                        <span class="float-end" >{{ $totalPrice }}</span>
-                                    </h4>
-                                    <hr>
-                                    <a href="{{ url('/checkout') }}" class="btn btn-warning w-100">Check Out</a>
-                                </div>
-                            </div>
+                            @endforelse
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-header py-3">
+                            <h5 class="mb-0">Summary</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                    Products
+                                    <span>${{ $totalPrice }}</span>
+                                </li>
+                                <li
+                                    class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                                    Shipping
+                                    <span>$25</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                    Vat
+                                    <span>$10</span>
+                                </li>
+                                <li
+                                    class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                                    <div>
+                                        <strong>Total amount</strong>
+                                        <strong>
+                                            <p class="mb-0">(including VAT)</p>
+                                        </strong>
+                                    </div>
+                                    <span><strong>${{ $totalPrice + 10 + 25 }}</strong></span>
+                                </li>
+                            </ul>
+
+                            <a href="{{ url('/checkout') }}" class="btn btn-danger btn-lg btn-block"> Go to
+                                Checkout</a>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
-    </div>
+    </section>
 </div>

@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <div class="py-3 pyt-md-4">
+    <div class="py-3 mt-3 pyt-md-4">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-center">
@@ -12,9 +12,9 @@
                         <h5 class="alert alert-success">{{ session('message') }}</h5>
                     @endif
                     <div class="p-4 shadow bg-white">
-                        <h2>You Logo</h2>
-                        <h4>Thank You For Shopping With Shop</h4>
-                        <a href="{{ url('/collections') }}" class="btn btn-primary">Shop Now</a>
+                        <img src="{{ asset('assets/img/logo.png') }}" height="50" loading="lazy" style="margin-top: -1px;" />
+                        <h4 class="py-5">Thank You For Shopping With Shop</h4>
+                        <a href="{{ url('/') }}" class="btn btn-primary">Shop Now</a>
                     </div>
                 </div>
             </div>

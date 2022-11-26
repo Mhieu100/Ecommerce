@@ -32,19 +32,10 @@ class ProductFormRequest extends FormRequest
                 'required',
                 'string'
             ],
-            'slug' => [
-                'required',
-                'string',
-                'max:255'
-            ],
             'brand' => [
                 'required',
                 'string',
                 'max:255'
-            ],
-            'small_description' => [
-                'required',
-                'string'
             ],
             'description' => [
                 'required',
@@ -67,19 +58,6 @@ class ProductFormRequest extends FormRequest
             ],
             'status' => [
                 'nullable'
-            ],
-            'meta_keywords' => [
-                'required',
-                'string'
-            ],
-            'meta_title' => [
-                'required',
-                'string',
-                'max:255'
-            ],
-            'meta_description' => [
-                'required',
-                'string'
             ],
             'image' => [
                 'nullable',

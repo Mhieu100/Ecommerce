@@ -12,13 +12,12 @@ class Index extends Component
 {
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
-    public $name,$slug,$status,$brand_id,$category_id;
+    public $name,$status,$brand_id,$category_id;
 
     public function rules()
     {
         return [
             'name' => 'required | string',
-            'slug' => 'required | string',
             'category_id' => 'required | integer',
             'status' => 'nullable'
         ];
@@ -26,7 +25,6 @@ class Index extends Component
     public function resetInput()
     {
         $this->name = NULL;
-        $this->slug = NULL;
         $this->status = NULL;
         $this->brand_id = NULL;
         $this->category_id = NULL;
@@ -36,7 +34,6 @@ class Index extends Component
         $validateData = $this->validate();
         Brand::create([
             'name' => $this->name,
-            'slug' => Str::slug($this->slug),
             'status' => $this->status == true ? '1' : '0',
             'category_id' => $this->category_id
         ]);
@@ -57,7 +54,6 @@ class Index extends Component
         $this->brand_id = $brand_id;
         $brand = Brand::findOrFail($brand_id);
         $this->name = $brand->name;
-        $this->slug = $brand->slug;
         $this->status = $brand->status;
         $this->category_id = $brand->category_id;
     }
@@ -66,7 +62,6 @@ class Index extends Component
         $validateData = $this->validate();
         Brand::findOrFail($this->brand_id)->update([
             'name' => $this->name,
-            'slug' => Str::slug($this->slug),
             'status' => $this->status == true ? '1' : '0',
             'category_id' => $this->category_id
         ]);
