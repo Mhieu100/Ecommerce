@@ -6,7 +6,7 @@
                 <div class="col-md-8">
                     <div class="card mb-4">
                         <div class="card-header py-3">
-                            <h5 class="mb-0">My Cart</h5>
+                            <h5 class="mb-0">Giỏ hàng</h5>
                         </div>
                         <div class="card-body">
                             @forelse ($cart as $itemCart)
@@ -33,15 +33,15 @@
                                                 <p><strong>{{ $itemCart->product->name }}</strong></p>
                                             </a>
                                             <div class="d-flex">
-                                                <p>Color </p>
+                                                <p>Màu </p>
                                                 @if ($itemCart->productColor)
                                                     <label
                                                         style="width: 25px; height: 25px; border-radius: 50%; background-color: {{ $itemCart->productColor->color->code }}; margin-left: 10px;"></label>
                                                 @else
-                                                    <label class="price">No Color</label>
+                                                    <label class="price">Ngẩu nhiên</label>
                                                 @endif
                                             </div>
-                                            <p>Price: ${{ $itemCart->product->selling_price }}</p>
+                                            <p>Giá: ${{ $itemCart->product->selling_price }}</p>
                                             <button type="button" wire:loading.attr="disabled"
                                                 wire:click="removeItemCart({{ $itemCart->id }})"
                                                 class="btn btn-danger btn-sm me-1 mb-2">
@@ -70,7 +70,7 @@
                                                         class="fa fa-plus"></i></button>
                                             </div>
                                             <p class="text-start text-md-center">
-                                                Quantity: <strong>
+                                                Tổng tiền: <strong>
                                                     ${{ $itemCart->product->selling_price * $itemCart->quantity }}
                                                     @php
                                                         $totalPrice += $itemCart->product->selling_price * $itemCart->quantity;
@@ -83,7 +83,7 @@
                                 @endif
                             @empty
                                 <div>
-                                    No Product In Cart
+                                    Không có sản phẩm được thêm
                                 </div>
                             @endforelse
                         </div>
@@ -92,37 +92,36 @@
                 <div class="col-md-4">
                     <div class="card mb-4">
                         <div class="card-header py-3">
-                            <h5 class="mb-0">Summary</h5>
+                            <h5 class="mb-0">Tổng tiền</h5>
                         </div>
                         <div class="card-body">
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item d-flex justify-content-between align-items-center px-0">
-                                    Products
+                                    Tiền sản phẩm
                                     <span>${{ $totalPrice }}</span>
                                 </li>
                                 <li
                                     class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
-                                    Shipping
+                                    Vận chuyển
                                     <span>$25</span>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center px-0">
-                                    Vat
+                                    Thuế
                                     <span>$10</span>
                                 </li>
                                 <li
                                     class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
                                     <div>
-                                        <strong>Total amount</strong>
+                                        <strong>Thành tiền</strong>
                                         <strong>
-                                            <p class="mb-0">(including VAT)</p>
+                                            <p class="mb-0">(Đã bao gồm VAT)</p>
                                         </strong>
                                     </div>
                                     <span><strong>${{ $totalPrice + 10 + 25 }}</strong></span>
                                 </li>
                             </ul>
 
-                            <a href="{{ url('/checkout') }}" class="btn btn-danger btn-lg btn-block"> Go to
-                                Checkout</a>
+                            <a href="{{ url('/checkout') }}" class="btn btn-danger btn-lg btn-block"> Đi đến thanh toán</a>
                         </div>
                     </div>
                 </div>

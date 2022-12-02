@@ -10,10 +10,10 @@
                 @foreach ($sliders as $key => $slider)
                     <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
                         <img src="{{ asset("$slider->image") }}" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
+                        {{-- <div class="carousel-caption d-none d-md-block">
                             <h5>{!! $slider->title !!}</h5>
                             <p>{!! $slider->description !!}</p>
-                        </div>
+                        </div> --}}
                     </div>
                 @endforeach
             </div>

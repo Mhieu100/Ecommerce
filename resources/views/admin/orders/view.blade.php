@@ -15,8 +15,8 @@
                             class="btn btn-success text-white btn-sm float-end ms-2">View Invoice</a>
                         <a href="{{ url('admin/invoice/' . $order->id . '/generate') }}"
                             class="btn btn-warning text-white btn-sm  ms-2 float-end">Dowwload Invoice</a>
-                        <a href="{{ url('admin/invoice/' . $order->id . '/mail') }}"
-                            class="btn btn-primary text-white btn-sm  ms-2 float-end">Send Mail Invoice</a>
+                        {{-- <a href="{{ url('admin/invoice/' . $order->id . '/mail') }}"
+                            class="btn btn-primary text-white btn-sm  ms-2 float-end">Send Mail Invoice</a> --}}
                     </h4>
                 </div>
                 <div class="card-body bg-contents">
@@ -157,16 +157,6 @@
                                             <option value="completed"
                                                 {{ Request::get('status') == 'completed' ? 'selected' : '' }}>Completed
                                             </option>
-                                            <option value="pending"
-                                                {{ Request::get('status') == 'pending' ? 'selected' : '' }}>
-                                                Pending</option>
-                                            <option value="cancelled"
-                                                {{ Request::get('status') == 'cancelled' ? 'selected' : '' }}>Cancelled
-                                            </option>
-                                            <option value="out-for-delivery"
-                                                {{ Request::get('status') == 'out-for-delivery' ? 'selected' : '' }}>Our
-                                                For
-                                                Delivery</option>
                                         </select>
                                         <button class="btn btn-primary text-white">Update</button>
                                     </div>

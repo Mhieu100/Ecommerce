@@ -7,7 +7,7 @@
             <div class="input-group">
                 <div class="form-outline">
                     <input id="search-input"  name="search" type="search" id="form1" class="form-control" />
-                    <label class="form-label" for="form1">Search</label>
+                    <label class="form-label" for="form1">Tìm kiếm</label>
                 </div>
                 <button id="search-button" type="submit" class="btn btn-danger">
                     <i class="fas fa-search"></i>

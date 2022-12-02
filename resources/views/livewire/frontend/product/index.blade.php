@@ -5,7 +5,7 @@
             @if ($category->brands)
                 <div class="col-lg-3 p-4">
                     <div class="mb-4">
-                        <h4>Brand</h4>
+                        <h4>Thương hiệu</h4>
                         <div class="p-3">
                             @foreach ($category->brands as $item)
                                 <div class="form-check">
@@ -17,17 +17,17 @@
                         </div>
                     </div>
                     <div>
-                        <h4>Price</h4>
+                        <h4>Giá </h4>
                         <div class="p-3">
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" wire:model="priceInput" name="priceSort"
                                     value="high-to-low" id="flexCheckDefault" />
-                                <label class="form-check-label" for="1">High To Low</label>
+                                <label class="form-check-label" for="1">Từ cao tới thấp</label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" wire:model="priceInput" name="priceSort"
                                     value="low-to-high" id="flexCheckDefault" />
-                                <label class="form-check-label" for="1">Low To High</label>
+                                <label class="form-check-label" for="1">Từ thấp tới cao</label>
                             </div>
                         </div>
                     </div>
@@ -36,7 +36,7 @@
             <div class="col-lg-9">
                 <div class="container p-4">
                     <div class="mb-4">
-                        <h4>All product of {{ $category->name }}</h4>
+                        <h4>Tất cả sản phẩm của {{ $category->name }}</h4>
                         <div class="row">
                             @forelse ($products as $product)
                                 <div class="col-sm-6 col-md-4 col-lg-3 mb-2 mb-lg-0">

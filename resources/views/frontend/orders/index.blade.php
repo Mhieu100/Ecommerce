@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="shadow bg-white p-3">
-                        <h4 class="mb-4">My Orders</h4>
+                        <h4 class="mb-4">Đơn hàng của bạn</h4>
                         <hr>
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped">
@@ -30,7 +30,7 @@
                                             <td>{{ $order->fullname }}</td>
                                             <td>{{ $order->payment_mode }}</td>
                                             <td>{{ $order->created_at }}</td>
-                                            <td>{{ $order->status_message }}</td>
+                                            <td style="text-transform: uppercase" class="text-success fw-bold">{{ $order->status_message }}</td>
                                             <td>
                                                 <a href="{{ url('orders/' . $order->id) }}"
                                                     class="btn btn-primary btn-sm">View</a>

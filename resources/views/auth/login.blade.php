@@ -10,7 +10,7 @@
                     <div class="card shadow-2-strong" style="border-radius: 1rem;">
                         <div class="card-body p-5 text-center">
 
-                            <h3 class="mb-5">Sign in</h3>
+                            <h3 class="mb-5">Đăng Nhập</h3>
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf
                                 <div class="form-outline mb-4">
@@ -23,7 +23,7 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
-                                    <label class="form-label" for="form1Example13">Email address</label>
+                                    <label class="form-label" for="form1Example13">Email</label>
                                 </div>
                                 <div class="form-outline mb-4">
                                     <input id="password" type="password"
@@ -34,24 +34,18 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
-                                    <label class="form-label" for="form1Example23">Password</label>
+                                    <label class="form-label" for="form1Example23">Mật Khẩu</label>
                                 </div>
                                 <div class="d-flex justify-content-around align-items-center mb-4">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="remember" id="remember"
-                                            {{ old('remember') ? 'checked' : '' }}>
-                                        <label class="form-check-label" for="form1Example3"> Remember me </label>
-                                    </div>
                                     @if (Route::has('password.request'))
                                         <a class="btn btn-link" href="{{ route('password.request') }}">
-                                            Forgot Your Password ?
+                                            Quên mật khẩu ?
                                         </a>
                                     @endif
                                 </div>
                                 <button type="submit" class="btn btn-danger btn-lg btn-block">Đăng Nhập</button>
                                 <hr class="my-4">
-                                <a class="btn btn-primary btn-lg btn-block" href="{{ url('/register') }}">Creat New
-                                    Account</a>
+                                <a class="btn btn-primary btn-lg btn-block" href="{{ url('/register') }}">Tạo tài khoản mới</a>
                             </form>
                         </div>
                     </div>

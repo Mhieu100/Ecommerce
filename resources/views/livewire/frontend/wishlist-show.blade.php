@@ -1,7 +1,7 @@
 <div>
 
     <div class="container h-100 py-5">
-        <h4 style="text-align: center;" class="mb-3">Wish List</h4>
+        <h4 style="text-align: center;" class="mb-3">Danh sách yêu thích</h4>
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-10">
                 @forelse ($wishlist as $itemWishlist)
@@ -18,7 +18,7 @@
                                     </div>
                                     <div class="col-md-3 col-lg-5">
                                         <a
-                                            href="{{ url('collections/' . $itemWishlist->product->category->slug . '/' . $itemWishlist->product->slug) }}">
+                                            href="{{ url('collections/' . $itemWishlist->product->category->name . '/' . $itemWishlist->product->name) }}">
                                             <h4 class="lead fw-bold mb-2">{{ $itemWishlist->product->name }}</h4>
                                         </a>
                                     </div>
@@ -31,10 +31,10 @@
                                             class="btn btn-danger btn-sm me-1 mb-2">
                                             <span wire:loading.remove
                                                 wire:target="removeWishlish({{ $itemWishlist->id }})">
-                                                <i class="fa fa-trash"></i> Remove
+                                                <i class="fa fa-trash"></i> Xóa
                                             </span>
                                             <span wire:loading wire:target="removeWishlish({{ $itemWishlist->id }})">
-                                                <i class="fa fa-trash"></i> Removing</span>
+                                                <i class="fa fa-trash"></i> Xóa...</span>
                                         </button>
                                     </div>
                                 </div>
@@ -44,7 +44,7 @@
                 @empty
                     <div class="card rounded-3 mb-4">
                         <div class="card-body p-3">
-                            <h4 class="p-3 text-center">No Wishlist Add</h4>
+                            <h4 class="p-3 text-center">Không có sản phẩm được thêm</h4>
                         </div>
                     </div>
                 @endforelse

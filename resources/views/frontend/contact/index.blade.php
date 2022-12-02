@@ -17,17 +17,17 @@
                 </div>
             </div>
             <div class="col-lg-4 p-3">
-                <h4 class="text-center mb-3">Contact Us</h4>
+                <h4 class="text-center mb-3">Về chúng tôi</h4>
                 <div class="alert alert-secondary shadow-5 d-flex fw-bold" role="alert">
                     <i class="fa-solid fa-location-dot" style="font-size: 25px;"></i>
                     <div style="margin-left: 70px;">
-                        Address : Da Nang, Viet Nam
+                        Địa chỉ : Da Nang, Viet Nam
                     </div>
                 </div>
                 <div class="alert alert-secondary shadow-5 d-flex fw-bold" role="alert">
                     <i class="fa-solid fa-phone" style="font-size: 25px;"></i>
                     <div style="margin-left: 70px;">
-                        Phone : + 01 234 567 88
+                        Số điện thoại : + 01 234 567 88
                     </div>
                 </div>
                 <div class="alert alert-secondary shadow-5 d-flex fw-bold" role="alert">
@@ -37,29 +37,29 @@
                     </div>
                 </div>
 
-                <h4 class="text-center mt-5 mb-3">Make a question</h4>
+                <h4 class="text-center mt-5 mb-3">Đặt câu hỏi</h4>
                 <form>
                     <div class="row">
                         <div class="col-md-6 mb-4">
                             <div class="form-outline">
                                 <input type="text" id="form3Example1" class="form-control" />
-                                <label class="form-label" for="form3Example1">First name</label>
+                                <label class="form-label" for="form3Example1">Họ tên</label>
                             </div>
                         </div>
                         <div class="col-md-6 mb-4">
                             <div class="form-outline">
                                 <input type="email" id="form3Example3" class="form-control" />
-                                <label class="form-label" for="form3Example3">Email address</label>
+                                <label class="form-label" for="form3Example3">Email</label>
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-outline">
                                 <textarea class="form-control" id="textAreaExample" rows="4"></textarea>
-                                <label class="form-label" for="textAreaExample">Message</label>
+                                <label class="form-label" for="textAreaExample">Câu hỏi ?</label>
                             </div>
                         </div>
                     </div>
-                    <button type="button" class="btn btn-success mt-4">Success</button>
+                    <button type="button" class="btn btn-success mt-4">Gửi</button>
                 </form>
             </div>
         </div>

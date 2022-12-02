@@ -13,8 +13,8 @@
                     @endif
                     <div class="p-4 shadow bg-white">
                         <img src="{{ asset('assets/img/logo.png') }}" height="50" loading="lazy" style="margin-top: -1px;" />
-                        <h4 class="py-5">Thank You For Shopping With Shop</h4>
-                        <a href="{{ url('/') }}" class="btn btn-primary">Shop Now</a>
+                        <h4 class="py-5">Cảm ơn quý khách đã đặt hàng tại Website của chúng tôi</h4>
+                        <a href="{{ url('/') }}" class="btn btn-primary">Tiếp tục mua hàng</a>
                     </div>
                 </div>
             </div>

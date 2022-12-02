@@ -36,7 +36,7 @@
                                 </div>
                                 <p class="about">{{ $product->description }}</p>
                                 <div class="sizes mt-4">
-                                    <h6 class="text-capitalize">Color</h6>
+                                    <h6 class="text-capitalize">Màu</h6>
                                     <div>
                                         @if ($product->productColors->count() > 0)
                                             @if ($product->productColors)
@@ -64,7 +64,7 @@
                                     </div>
                                 </div>
                                 <div class="mt-2">
-                                    <h6 class="text-capitalize">Quantity</h6>
+                                    <h6 class="text-capitalize">Số lượng</h6>
                                     <div class="input-group">
                                         <span class="btn btn-danger" wire:click="decrementQuantity"><i
                                                 class="fa fa-minus"></i></span>
@@ -78,13 +78,13 @@
                                 <div class="cart mt-4 align-items-center">
                                     <button class="btn btn-danger text-uppercase mr-2 px-4" type="buttom"
                                         wire:click="addToCart({{ $product->id }})"><i
-                                            class="fa fa-cart-arrow-down"></i> Add to cart</button>
+                                            class="fa fa-cart-arrow-down"></i> Thêm giỏ hàng</button>
                                     <button class="btn btn-danger text-uppercase mr-2 px-4" type="button"
                                         wire:click="addToWishList({{ $product->id }})">
                                         <span wire:loading.remove wire:target="addToWishList">
-                                            <i class="fa fa-heart"></i> Add To Wishlist
+                                            <i class="fa fa-heart"></i> Danh sánh yêu thích
                                         </span>
-                                        <span wire:loading wire:target="addToWishList">Adding...</span>
+                                        <span wire:loading wire:target="addToWishList">Thêm...</span>
                                     </button>
                                 </div>
                             </div>

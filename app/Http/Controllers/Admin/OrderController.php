@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\DemoMail;
 use App\Mail\IncvoiceOrderMail;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
@@ -67,9 +68,9 @@ class OrderController extends Controller
     }
     public function sendmailInvoice(int $orderId)
     {
-        $order = Order::findOrFail($orderId);
         try{
-            Mail::to("$order->email")->send(new IncvoiceOrderMail($order));
+            $order = Order::findOrFail($orderId);
+            Mail::to("hieunguyen201103@gmail.com")->send(new IncvoiceOrderMail($order));
             return redirect('admin/orders/' . $orderId)->with('message', 'Send Mail Invoice Success To ' . $order->email);
         }
         catch(\Exception $e){

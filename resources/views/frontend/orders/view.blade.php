@@ -10,7 +10,7 @@
                 <div class="col-md-12">
                     <div class="shadow bg-white p-3">
                         <h4 class="text-primary">
-                            <i class="fa fa-shopping text-dark"></i> My Order Details
+                            <i class="fa fa-shopping text-dark"></i>Chi tiết đơn hàng
                             <a href="{{ url('orders') }}" class="btn btn-danger btn-sm float-end">Back</a>
                         </h4>
                         <hr>

@@ -11,7 +11,7 @@
                                 <div class="row">
                                     <div class="col-lg-6 px-5 py-4">
 
-                                        <h3 class="mb-5 pt-2 text-center fw-bold text-uppercase">Your products</h3>
+                                        <h3 class="mb-5 pt-2 text-center fw-bold text-uppercase">Sản phẩm của bạn</h3>
 
                                         @foreach ($cart as $itemCart)
                                             <div class="d-flex align-items-center mb-4">
@@ -23,19 +23,19 @@
                                                 <div class="flex-grow-1 ms-3">
                                                     <h5 class="text-primary">{{ $itemCart->product->name }}</h5>
                                                     <div class="d-flex">
-                                                        <h6 style="color: rgb(131, 131, 131);">Color:
+                                                        <h6 style="color: rgb(131, 131, 131);">Màu :
                                                             @if ($itemCart->productColor)
                                                                 <label
                                                                     style="width: 15px; height: 15px; border-radius: 50%; background-color: {{ $itemCart->productColor->color->code }}; margin-left: 5px"></label>
                                                             @else
-                                                                <label class="price">No Color</label>
+                                                                <label class="price">Ngẩu nhiên</label>
                                                             @endif
                                                     </div>
 
                                                     </h6>
-                                                    <h6 style="color: rgb(131, 131, 131);">Price:
+                                                    <h6 style="color: rgb(131, 131, 131);">Giá :
                                                         ${{ $itemCart->product->selling_price }}</h6>
-                                                    <h6>Quantity:
+                                                    <h6>Tổng :
                                                         ${{ $itemCart->product->selling_price * $itemCart->quantity }}
                                                     </h6>
                                                 </div>
@@ -46,22 +46,22 @@
 
                                         <div class="d-flex justify-content-between p-2 mb-2"
                                             style="background-color: #e1f5fe;">
-                                            <h5 class="fw-bold mb-0">Total:</h5>
+                                            <h5 class="fw-bold mb-0">Tổng tiền:</h5>
                                             <h5 class="fw-bold mb-0">${{ $totalProductAmount }}</h5>
                                         </div>
                                         <hr>
-                                        <small>* Items will be delivered in 3 - 5 days.</small>
+                                        <small>* Hàng sẽ về sau 3 - 5 ngày.</small>
                                         <br />
-                                        <small>* Tax and other charges are included ?</small>
+                                        <small>* Đã bao gồm thuế và các chi phí khác ?</small>
 
                                     </div>
                                     <div class="col-lg-6 px-5 py-4">
 
-                                        <h3 class="mb-4 pt-2 text-center fw-bold text-uppercase">Information</h3>
+                                        <h3 class="mb-4 pt-2 text-center fw-bold text-uppercase">Thông tin của bạn</h3>
 
                                         <form action="" method="POST" class="mb-3">
                                             <div class="mb-3">
-                                                <label class="form-label" for="fullname">Full Name</label>
+                                                <label class="form-label" for="fullname">Họ Tên</label>
                                                 <input type="text" wire:model.defer.defer="fullname" id="fullname"
                                                     class="form-control" placeholder="Enter Full Name" readonly />
 
@@ -81,7 +81,7 @@
                                             <div class="mb-2">
                                                 <div class="row">
                                                     <div class="col-md-6 mb-3">
-                                                        <label class="form-label" for="phone">Phone</label>
+                                                        <label class="form-label" for="phone">Số điện thoại</label>
                                                         <input type="number" wire:model.defer="phone" id="phone"
                                                             class="form-control" placeholder="Enter Phone Number"/>
 
@@ -101,7 +101,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <label class="form-label" for="address">Address</label>
+                                            <label class="form-label" for="address">Địa chỉ</label>
                                             <textarea wire:model.defer="address" id="address" class="form-control" rows="2"></textarea>
 
                                             @error('address')
@@ -109,7 +109,7 @@
                                             @enderror
 
                                             <div class="row mt-3" wire:ignore>
-                                                <h5>Select Payment Mode:</h5>
+                                                <h5>Phương thức thanh toán :</h5>
                                                 <div class="col-3">
                                                     <div class="nav flex-column nav-pills text-center" id="v-pills-tab"
                                                         role="tablist" aria-orientation="vertical">
@@ -129,22 +129,22 @@
                                                     <div class="tab-content col-md-9" id="v-pills-tabContent">
                                                         <div class="tab-pane fade show active" id="v-pills-home"
                                                             role="tabpanel" aria-labelledby="v-pills-home-tab">
-                                                            <h6>Cash on Delivery Mode</h6>
+                                                            <h6>Phương thức thanh toán khi nhận hàng</h6>
                                                             <hr />
                                                             <button wire:loading.attr="disabled" type="button"
                                                                 wire:click="codOrder" class="btn btn-primary">
                                                                 <span wire:target="codOrder" wire:loading.remove>
-                                                                    Place Order (Cash on Delivery)
+                                                                    Đặt hàng ( thanh toán khi nhận hàng )
                                                                 </span>
                                                                 <span wire:target="codOrder" wire:loading>
-                                                                    Placing Order ...
+                                                                     Đặt hàng ...
                                                                 </span>
                                                             </button>
 
                                                         </div>
                                                         <div class="tab-pane fade" id="v-pills-profile"
                                                             role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                                                            <h6>Online Payment Mode</h6>
+                                                            <h6>Thanh toán online</h6>
                                                             <hr />
                                                             <div>
                                                                 <div id="paypal-button-container"></div>
@@ -158,7 +158,7 @@
                                 </div>
                             @else
                                 <div class="card card-body shadow text-center mt-4 mb-4">
-                                    <h3 class="mt-3 mb-4">No Product In Cart To CheckOut</h3>
+                                    <h3 class="mt-3 mb-4">Không có sản phẩm nào trong giỏ để thành toán</h3>
                                     <a href="{{ url('/home') }}" class="btn btn-danger">Shoping Now</a>
                                 </div>
                             @endif

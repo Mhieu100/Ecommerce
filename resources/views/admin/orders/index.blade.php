@@ -21,9 +21,6 @@
                                     <option value="">Select All Status</option>
                                     <option value="is progress" {{ Request::get('status') == 'is progress' ? 'selected' : '' }} >Is Progress</option>
                                     <option value="completed" {{ Request::get('status') == 'completed' ? 'selected' : '' }} >Completed</option>
-                                    <option value="pending" {{ Request::get('status') == 'pending' ? 'selected' : '' }} >Pending</option>
-                                    <option value="cancelled" {{ Request::get('status') == 'cancelled' ? 'selected' : '' }} >Cancelled</option>
-                                    <option value="out-for-delivery" {{ Request::get('status') == 'out-for-delivery' ? 'selected' : '' }} >Our For Delivery</option>
                                 </select>
                             </div>
                             <div class="col-md-6">
